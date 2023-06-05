@@ -1,19 +1,25 @@
-#!/usr/bin/env python3
-"""
-Exercise  6.5: Take the following Python code that stores a string:
+String Parsing : Parsing a string means, to breakdown string into smaller components (substring), and extract this required substring.
 
-string = 'X-DSPAM-Confidence:0.8475'
+Procedure;
+First to determine start index (start point)  and end index. 
+Then,  extract the substring between start index and end index using slicing method 
 
-Use find and string slicing to extract the portion of the string after the
-colon character and then use the float function to convert the extraced string
-into a floating number.
+Here our aim is to extract the 0.8475 from the string.
+#first store the entire string in some variable called str
+str= “X-DSPAM-Confidence :0.8475 "
+        
+#find the starting index using find function. (here starting point is colon (:))
+start = str.find(‘:’)    
+                                          
+#find the end index using find function. (here end index is white space(‘ ‘))
+end = str.find(‘  ’, start)    
+       or
+# find the end index by finding total length of the string
+end = len(str)    
 
-Python for Everybody: Exploring Data Using Python 3
-by Charles R. Severance
-"""
-string = 'X-DSPAM-Confidence: 0.8475'
+# Now to extract the string between start point and end point
+sub_string= str[start+1 : end]
 
-col_pos = string.find(':')                  # Finds the colon character
-number = string[col_pos + 1:]                 # Extracts portion after colon
-confidence = float(number)                  # Converts to floating point number
-print(confidence)
+# to convert this sub string into floating 
+Number = float(sub_string)
+print(Number)
